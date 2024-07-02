@@ -1,9 +1,13 @@
+import Link from "next/link";
+
 export default function ProviderLogin() {
-  
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:1337";
-  const path = "/api/connect/github"
+  const backendUrl =
+    process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:1337";
+  const path = "/api/connect/github";
   const url = new URL(backendUrl + path);
-  
+
+  // http://localhost:1337/api/connect/github
+
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -22,7 +26,10 @@ export default function ProviderLogin() {
           <div>
             <div className="grid grid-cols-1 gap-4">
               <form>
-                <a href={url.href} className="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent">
+                <Link
+                  href={url.href}
+                  className="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent"
+                >
                   <svg
                     className="h-5 w-5 fill-[#24292F]"
                     aria-hidden="true"
@@ -38,7 +45,7 @@ export default function ProviderLogin() {
                   <span className="text-sm font-semibold leading-6">
                     GitHub
                   </span>
-                </a>
+                </Link>
               </form>
             </div>
           </div>
