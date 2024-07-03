@@ -1,4 +1,4 @@
-import { LogoutButton } from "@/components/Logout";
+import { LogoutButton } from "@/components/LogoutButton";
 import React from "react";
 
 export default function Dashboard() {

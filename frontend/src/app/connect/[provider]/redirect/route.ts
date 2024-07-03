@@ -10,14 +10,16 @@ const config = {
 };
 
 export const dynamic = 'force-dynamic' // defaults to auto
-export async function GET(request: Request) {
+export async function GET(request: Request, params: { params: { provider: string } }) {
+  
   const { searchParams } = new URL(request.url)
   const token = searchParams.get('access_token')
   
   if (!token) return NextResponse.redirect(new URL("/", request.url));
-
+  
+  const provider = params.params.provider
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:1337";
-  const path = "/api/auth/github/callback"
+  const path = `/api/auth/${provider}/callback`;
 
   const url = new URL(backendUrl + path);
   url.searchParams.append('access_token', token)
